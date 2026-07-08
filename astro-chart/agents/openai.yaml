@@ -1,0 +1,4 @@
+interface:
+  display_name: "Astro Chart"
+  short_description: "Offline western astrology: natal charts, current sky, transits and synastry with arcminute-level planet positions"
+  default_prompt: "Use $astro-chart to cast natal charts (natal), check the current sky (now), compute transits to a natal chart (transits) and compare two charts (synastry); then interpret with references/interpretation.md."

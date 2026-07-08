@@ -1,0 +1,4 @@
+interface:
+  display_name: "BaZi"
+  short_description: "Offline BaZi (Four Pillars) chart casting: pillars, ten gods, luck cycles, solar terms and lunar calendar conversion"
+  default_prompt: "Use $bazi to cast Four Pillars charts (chart), list solar term times (solar-terms), and convert between Gregorian and Chinese lunar dates (lunar); then interpret with references/interpretation.md."
