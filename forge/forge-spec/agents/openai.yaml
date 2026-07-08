@@ -1,0 +1,4 @@
+interface:
+  display_name: "Forge Spec"
+  short_description: "Grill vague ideas into testable specs: proposal, delta spec, clarification taxonomy"
+  default_prompt: "Load $forge-spec and align on WHAT before any code: grill one question at a time, write the proposal and delta spec, run the clarify loop, pass forge check."

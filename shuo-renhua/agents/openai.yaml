@@ -1,0 +1,4 @@
+interface:
+  display_name: "Shuo Renhua"
+  short_description: "Remove AI-flavor from Chinese and English prose: human-text stop-gate, register-aware pattern subtraction, craft polish, voice calibration, plus a mechanical tell-scanner"
+  default_prompt: "Use $shuo-renhua to de-AI text: run the gate/register/rewrite/self-check flow from SKILL.md, scan hard tells with scripts/shuo_renhua check, and count report metrics with scripts/shuo_renhua stats."

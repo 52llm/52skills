@@ -1,0 +1,4 @@
+interface:
+  display_name: "Forge Plan"
+  short_description: "Turn WHAT into HOW: equal-weight alternatives, constitution check, tracer-bullet tasks, consistency analysis"
+  default_prompt: "Load $forge-plan: challenge the premise, compare minimal-viable vs ideal designs, write plan.md and verifiable tasks.md, run the six-pass analyze and forge check before building."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Forge Compound"
+  short_description: "Capture learnings into project memory, promote repeated lessons to standards, merge spec deltas and archive"
+  default_prompt: "Load $forge-compound: extract lessons from corrections, errors and repeated workflows, write or update dual-track lessons, run the discoverability check, merge deltas and archive the change."

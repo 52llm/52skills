@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# forge CLI 包装器：解析 Python 解释器后转发给 forge.py。
+# 解释器解析顺序（与本仓库其他 skill 一致）：
+#   FORGE_PYTHON → $VIRTUAL_ENV/bin/python → PYTHON → python3
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+PY="${FORGE_PYTHON:-}"
+if [[ -z "$PY" && -n "${VIRTUAL_ENV:-}" ]]; then
+  PY="$VIRTUAL_ENV/bin/python"
+fi
+if [[ -z "$PY" ]]; then
+  PY="${PYTHON:-python3}"
+fi
+
+exec "$PY" "$SCRIPT_DIR/forge.py" "$@"

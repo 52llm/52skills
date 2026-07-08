@@ -1,0 +1,4 @@
+interface:
+  display_name: "Forge Debug"
+  short_description: "Systematic debugging: red-capable repro first, competing falsifiable hypotheses, root-cause tracing, regression test"
+  default_prompt: "Load $forge-debug: read the full error, build a minimal red-capable repro before any theory, test 3-5 competing hypotheses one at a time, fix the root cause and lock it with a regression test."

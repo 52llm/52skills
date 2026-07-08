@@ -1,0 +1,4 @@
+interface:
+  display_name: "UI Taste"
+  short_description: "Anti-slop frontend design: direction, numeric tokens, graded bans, component specs, screenshot self-critique, plus a mechanical tell-scanner and contrast checker"
+  default_prompt: "Use $ui-taste when building or reviewing frontend pages: follow the five-step flow (design read, direction, build, mechanical check via scripts/ui_taste, self-critique) and the references for tokens, anti-slop bans, craft, motion, components, review and redesign."

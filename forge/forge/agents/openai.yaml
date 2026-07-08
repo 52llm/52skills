@@ -1,0 +1,4 @@
+interface:
+  display_name: "Forge"
+  short_description: "Engineering pipeline hub: sizing router, .forge project memory, scaffolding CLI and mechanical gates"
+  default_prompt: "Load $forge, size the task (trivial/small/large), scaffold the change with the forge CLI, then follow the pipeline skills stage by stage."

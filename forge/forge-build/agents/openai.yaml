@@ -1,0 +1,4 @@
+interface:
+  display_name: "Forge Build"
+  short_description: "Evidence-first execution loop: red before green, surgical changes, progress ledger, iron verification gate"
+  default_prompt: "Load $forge-build: reload the progress ledger, execute tasks one at a time with failing-verification-first, commit per task, and pass the verification gate before claiming done."

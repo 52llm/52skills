@@ -1,0 +1,4 @@
+interface:
+  display_name: "Forge Review"
+  short_description: "Dual-axis review: spec compliance vs code quality, lens roster with never-skip security, default-to-NEEDS-WORK verdict"
+  default_prompt: "Load $forge-review: review the diff on both axes separately, run the lens roster with evidence-backed findings, and default the verdict to NEEDS WORK unless proven otherwise."
