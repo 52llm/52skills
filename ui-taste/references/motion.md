@@ -26,6 +26,7 @@
 - 缓动禁令：功能 UI 禁 bounce/elastic（`cubic-bezier(0.68,-0.55,0.27,1.55)` 即红灯）；空间移动禁 linear；UI 禁 ease-in 入场；进出用不同缓动族=错。
 - 弹簧四档（Motion）：Snappy `stiffness300/damping30` ｜ Smooth `150/20` ｜ Bouncy `100/10`（仅玩趣场景）｜ Heavy `60/20`。
 - `:active` 微按压 `scale(0.98)` 或 `-translate-y-[1px]`。hover 放大：CTA ≤1.02，卡片 ≤1.05。
+- 入场只有 fade-in = PPT 感：给预备→动作→跟随三拍（哪怕只是 8px 位移 + 轻微 settle）；关键结果/数字揭晓前留 ~0.5s 停顿（给观众反应时间）。
 
 ## 机制硬规则
 
@@ -35,7 +36,9 @@
 - 连续值（鼠标位置/滚动进度/磁性 hover）**禁 useState**：用 `useMotionValue`/`useTransform`（useState 每帧重渲染，移动端直接崩）。
 - rAF 循环必须有停止条件；`repeat:-1` 的循环 tween 组件卸载时必须 kill（SPA 内存泄漏）；同一组件树**禁混** GSAP 与 Motion（抢帧）；Three.js 同理隔离在叶子组件。
 - `transform-origin` 按运动语义设对；SVG 动 `<g>` 包裹层并配 `transform-box: fill-box; transform-origin: center`；动画可中断——中途响应用户输入，别锁死到播完。
-- 逐词/逐字文字动画 >8 个词禁（劫持阅读节奏）。
+- 逐词/逐字文字动画 >8 个词禁（劫持阅读节奏）；AI 流式文本按**词块**揭示（40-120ms 随机间隔），禁 setInterval 逐字符（老电影字幕感）。
+- 聚焦/压暗（spotlight 一张卡、dim 其余）必须带 `blur(4-8px)`——只调 opacity/brightness 非焦点仍然"锐利"，退不进景深。
+- 面板展开用"呼吸式"：先宽后高（先展开再注水），别宽高同时拉扯。
 - **reveal 安全**：内容可见性不许依赖 class 触发的过渡（隐藏 tab/无头渲染下过渡不触发→整节空白）。默认可见，动画只做增强。
 - **禁图片 hover 缩放/位移**（含 group-hover 经父级触发）——图不是动作目标；要反馈动卡片的底色/边框/阴影。
 - 循环动画离屏暂停；移动端粒子上限 桌面800/平板300/手机100；GSAP pin 在 <768px 禁用。

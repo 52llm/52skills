@@ -82,4 +82,5 @@
 - Next.js：全局状态只在 Client Component；动效/滚动监听组件做成 `'use client'` 叶子，Server Component 只渲染静态骨架。
 - `useEffect` 动画必须有清理函数；能用渲染逻辑表达的不进 useEffect。
 - CSS 选择器优先级互抵是高频翻车（`.section` 类选择器与 `.cta` 元素级选择器互相抵消节距）：区块间距只从一个方向、一套选择器给（统一 margin-top 或统一 padding-top），别两套都写。
+- 布局测量（getBoundingClientRect/offsetWidth 驱动的 masonry/下划线对齐/标记定位）必须等 `document.fonts.ready` + 一帧 rAF——否则量的是回退字体的宽度，webfont 换入后永久错位。absolute 子元素记得给父级 `position: relative`。
 - 交付前补：favicon、`<title>/description/og:image`、自定义 404、页脚法务链接。

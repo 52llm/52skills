@@ -29,7 +29,17 @@
 - 高端实测区间（营销页）：Hero 76-94px/700/lh1.05/-0.04em；节标题 48-56px/700/lh1.1/-0.03em；卡片标题 24-32px/600/lh1.2；正文 16-17px/400/lh1.5。Hero clamp 上限 ≤6rem(96px)——再大是喊叫不是设计。
 - 斜体降部（y g j p q）在 display 里会被 `leading-none` 裁掉：至少 `leading-[1.1]` + 底部留 `pb-1`。
 - 字体配对按**对比轴**配（衬线+无衬线、几何+人文），不配"相似但不相同"的两个几何无衬线；或干脆一族多字重。
-- 数字列/对比数据必须 `font-variant-numeric: tabular-nums`；标题 `text-wrap: balance`，长段 `text-wrap: pretty`。
+- 数字列/对比数据必须 `font-variant-numeric: tabular-nums`；标题 `text-wrap: balance`（只用于 ≤4 行标题，算法上限 6 行且有性能成本），长段 `text-wrap: pretty`。
+
+## 中文排印（CJK 专属翻车模式）
+
+- **fallback 链西文在前、中文在后**（`"Geist","Noto Sans SC","PingFang SC",sans-serif`）——font-family 逐字符匹配，反过来写西文字符全被中文字体吃掉。
+- `font-synthesis: none` 当保险丝：伪斜体扭曲汉字、合成加粗把笔画糊成墨团。**中文没有斜体**——强调改用字重、荧光笔底色、楷体、或 `text-emphasis` 着重号。
+- 中文行长 `max-width: 36em`（一行 22-38 字，最佳 28-32）；行高随行长增大（长行需要更宽的"轨道"）。
+- 标点：正文直角引号「」；`line-break: strict` 避头尾；`font-feature-settings: "halt"` 收全角标点空隙。
+- 中文 letter-spacing：正文 0~0.05em；display >60px 收 -0.02em~0，**永不套西文 -0.05em 那档**。
+- 竖排（`writing-mode: vertical-rl` + `text-combine-upright`）是 CJK 独有的 display 武器，编辑部/文化类场景可用。
+- 中文 webfont 必须子集化（cn-font-split/pyftsubset：正文按常用字表、display 按实际出现字符压到 ~50KB）+ `font-display: swap`——整包 5-15MB 阻塞首屏是常见事故。
 
 ## 圆角 / 阴影 / z-index
 
@@ -63,6 +73,8 @@
 ## 颜色
 
 - 用 **OKLCH** 写色阶（感知均匀）。中性色带一点品牌色相（chroma +0.005~0.015），不要默认往"暖"或"冷"偏——那是跨项目单一文化的来路。
+- **chroma 按角色设上限**：大面积底色 0.01-0.04；品牌主色 0.08-0.15；小面积点睛 0.15-0.22；>0.25 满版铺慎用（屏幕设计刻意压 chroma = 借用印刷的质感记忆）。
+- **论证自检**：每个主色写一句"为什么是这个色"（从品牌资产/内容实物/文化语境采样而来）——写不出这句话 = 在抄配方，配方复用一百次，色彩的信息量归零。
 - 大面积禁纯 `#000`/`#fff`；暗色底 `#0a0a0a~#141414` 档，正文最深观测值 `#18181b`。
 - **对比度**：WCAG 正文 ≥4.5:1、大字(≥24px 或粗体 ≥18.5px) ≥3:1、非文字 UI ≥3:1（AAA 正文 7:1）；用 APCA 则 Lc≥75 正文 / Lc≥60 大字 / Lc≥45 非文字。placeholder 同样要 4.5:1。`scripts/ui_taste contrast` 可算。
 - 图片描边（唯一不跟色调走的地方）：浅色 `outline: 1px solid rgba(0,0,0,.1)`、暗色 `rgba(255,255,255,.1)`，`outline-offset: -1px`。

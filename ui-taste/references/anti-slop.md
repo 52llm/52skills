@@ -54,9 +54,10 @@
 - **Claude 系**：三种默认长相（奶油+衬线+陶土 / 近黑+酸绿 / 报纸 hairline），见 direction.md 第 6 节。
 - **Codex/GPT 系**：ghost-card（1px 边框+≥16px 大模糊影叠加）；过度圆角（卡片 24-40px）；手绘感 SVG 插画（feTurbulence/doodle 类，宁可不放图）；斜条纹背景；装饰网格底。
 - **Gemini 系**：图片 hover 缩放/位移（含 group-hover:scale 经由父级触发）——图片不是动作目标，要反馈就动卡片底色/边框/阴影，永不动图。
-- **通用**：Inter+slate-900 三连；serif=创意的条件反射（Fraunces/Instrument Serif 两款 LLM 最爱 display 衬线默认禁）；高端消费品的奶油底+黄铜/陶土强调+espresso 深字全家桶（OKLCH L .84-.97、C<.06、hue 40-100 整个暖纸带；token 叫 --cream/--sand/--paper 本身就是印记）→ 六族轮换：冷奢银灰铬 / 森绿+骨白+琥珀 / 真黑+暖棕 / 钴蓝+奶 / 陶锈+板灰 / 单色+一个饱和跳色；连续两个项目不用同族。
+- **通用**：Inter+slate-900 三连；serif=创意的条件反射（Fraunces/Instrument Serif 两款 LLM 最爱 display 衬线默认禁，Instrument Serif 正在被用烂的路上）；已被用烂的 display 字体连带平替：Fraunces→Newsreader、Inter 当 display（它为 UI 小字设计，大字号匀质无表情）→Archivo、Space Grotesk→Schibsted Grotesk、Playfair Display→DM Serif Display；高端消费品的奶油底+黄铜/陶土强调+espresso 深字全家桶（OKLCH L .84-.97、C<.06、hue 40-100 整个暖纸带；token 叫 --cream/--sand/--paper 本身就是印记）→ 六族轮换：冷奢银灰铬 / 森绿+骨白+琥珀 / 真黑+暖棕 / 钴蓝+奶 / 陶锈+板灰 / 单色+一个饱和跳色；连续两个项目不用同族。
 
 ## 例外条款（让禁令可信的部分）
 
 brief 明说要的就做，且做得有纪律：品牌是紫→紫得体系化；要 brutalist→零圆角全大写是该风格的语法；要玩趣→emoji 有节制地上。禁的是**无意识默认**，不是风格本身。风格包（brutalist/极简编辑部/暗色终端）各自的内部规则允许覆盖本表对应条目，但覆盖要点名说明。
 反向收紧：**信任行业**（金融/医疗/政务/法务/保险）按更严一档执行——紫渐变这类 AI 印记即便品牌授权也慎用，实验风/brutalist 整体回避。
+反例隔离：页面本身要展示坏设计时（反面教材/对比页），把反例关进虚线边框 + 「反例·不要这样做」角标的诚实容器——讲 slop 的页面不能自己变成 slop。
