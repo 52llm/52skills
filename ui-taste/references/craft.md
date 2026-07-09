@@ -9,11 +9,13 @@
 - 异步反馈（toast/校验）加 `aria-live="polite"`；标题 h1-h6 层级连续；提供跳转正文的 skip link；锚点标题加 `scroll-margin-top`。
 - 键盘可达：所有交互元素 Tab 可到；禁 `tabindex>0`；模态锁焦点、关闭时焦点还给触发元素。
 - 颜色永不做唯一信号（涨跌/错误要有图标或文字伴随）。
+- 永不禁用缩放：viewport 里禁 `user-scalable=no` / `maximum-scale=1`。
 
 ## 焦点
 
 - 焦点必须可见：`focus-visible:ring-*`；**禁裸 `outline-none`**（无替代焦点样式）。
 - 用 `:focus-visible` 不用 `:focus`（避免鼠标点击也出焦点环）；复合控件用 `:focus-within`。
+- 一切可点元素要有 hover 反馈；hover/active/focus 的对比度按序**递增**（都要比静息态显眼）。
 
 ## 表单
 
@@ -22,11 +24,13 @@
 - **禁 blockPaste**（onPaste+preventDefault）；提交按钮请求发出前保持可用、请求中转 spinner；未保存改动要拦截导航（beforeunload/路由守卫）。
 - checkbox/radio 与 label 共享一个点击区（无死区）；破坏性操作必须确认框或可撤销窗口，永不立即执行。
 - 移动端输入字号 ≥16px（防 iOS 聚焦缩放）。
+- placeholder 以 `…` 结尾并给示例格式（`name@example.com…`）；非认证字段 `autocomplete="off"` 防密码管理器误弹。
 
 ## 排印微观（AI 最常漏的一层）
 
 - `…` 不用 `...`；弯引号 " " 不用直引号；`10 MB`、`⌘ K`、品牌名内用 `&nbsp;` 防折行；加载文案以 `…` 结尾（"Saving…"）。
 - 数字列 `tabular-nums`；标题 `text-wrap: balance` 防孤字，长段 `text-pretty`。
+- 计数用数字（"8 次部署"不写"八次"）；英文空间紧张处可用 `&` 代 and。
 
 ## 内容鲁棒
 
@@ -55,7 +59,7 @@
 - 复杂多列用 CSS Grid，禁 flex 百分比算术（`w-[calc(33%-1rem)]`）；免断点响应网格 `repeat(auto-fit, minmax(280px, 1fr))`；一维 flex、二维 grid。
 - 页面容器 `max-w-[1400px] mx-auto` 或 `max-w-7xl`；320px 宽下无横向滚动；每个多列布局在同组件里显式声明 <768px 的塌缩。
 - dropdown 放在 `overflow:hidden/auto` 容器里会被裁：用 popover API / `position:fixed` / portal。
-- 触控：`touch-action: manipulation`；模态/抽屉 `overscroll-behavior: contain`；拖拽时禁文本选择；`autoFocus` 仅桌面单主输入框场景。
+- 触控：`touch-action: manipulation`；`-webkit-tap-highlight-color` 有意设置；模态/抽屉 `overscroll-behavior: contain`；拖拽时禁文本选择、拖拽中的元素加 `inert`；`autoFocus` 仅桌面单主输入框场景。
 
 ## 导航与状态
 
@@ -77,4 +81,5 @@
 - import 前先查 package.json，缺就先输出安装命令；Tailwind 看清 v3/v4（v4 用 `@tailwindcss/postcss`）。
 - Next.js：全局状态只在 Client Component；动效/滚动监听组件做成 `'use client'` 叶子，Server Component 只渲染静态骨架。
 - `useEffect` 动画必须有清理函数；能用渲染逻辑表达的不进 useEffect。
+- CSS 选择器优先级互抵是高频翻车（`.section` 类选择器与 `.cta` 元素级选择器互相抵消节距）：区块间距只从一个方向、一套选择器给（统一 margin-top 或统一 padding-top），别两套都写。
 - 交付前补：favicon、`<title>/description/og:image`、自定义 404、页脚法务链接。

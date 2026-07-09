@@ -4,7 +4,7 @@
 check    静态扫描可确定判定的 AI 味硬信号（启发式：命中是强信号，未命中≠干净）
 contrast WCAG 对比度计算与 AA/AAA 判定
 
-规则与 references/anti-slop.md、craft.md 一一对应；每条给 file:line，
+规则与 references/anti-slop、craft、motion、tokens 等一一对应；每条给 file:line，
 critical 存在时退出码 1（可挂 CI）。纯标准库。
 """
 
@@ -46,7 +46,7 @@ def _mk_line_rules():
   # --- critical ---
   add("transition-all", "critical", None,
       r"transition:\s*['\"]?all\b|[\"'\s]transition-all[\"'\s]",
-      "禁 transition: all，逐属性列出（craft.md）")
+      "禁 transition: all，逐属性列出（motion.md）")
   add("scroll-listener", "critical", None,
       r"addEventListener\(\s*['\"]scroll['\"]",
       "禁 scroll 事件监听：用 useScroll/ScrollTrigger/IntersectionObserver（motion.md）")
@@ -86,7 +86,7 @@ def _mk_line_rules():
       r"cubic-bezier\(\s*0?\.68\s*,\s*-0?\.55|back\.(in|out|inOut)|elastic\.(in|out|inOut)",
       "功能 UI 禁 bounce/elastic 缓动（motion.md）")
   add("placeholder-copy", "major", MARKUP_EXTS,
-      r"Lorem ipsum|John Doe|Jane Doe|\bAcme\b",
+      r"Lorem ipsum|John Doe|Jane Doe|\bAcme\b|\bNexus\b|\bSmartFlow\b|\bQuantumly\b",
       "占位内容冒充真内容：换有语境的可信名字/文案（anti-slop.md）",
       re.IGNORECASE)
 
@@ -107,7 +107,7 @@ def _mk_line_rules():
       r"\bautoFocus\b|\bautofocus\b",
       "autoFocus 仅桌面单主输入框场景（craft.md）")
   add("filler-words", "minor", MARKUP_EXTS,
-      r"\b(Elevate|Seamless(ly)?|Unleash|Next-Gen|Revolutioni[sz]e|Game-changer)\b",
+      r"\b(Elevate|Seamless(ly)?|Unleash|Next-Gen|Revolutioni[sz]e|Game-changer|Delve)\b|In the world of",
       "营销填充词：写具体动词（anti-slop.md 文案）")
   return r
 

@@ -20,7 +20,7 @@
 ## simplicity（常驻）
 
 - 高级工程师会说这里过度设计吗？200 行能写成 50 行吗？
-- 常见味道：起不出好名字（Mysterious Name）、羡慕别家数据（Feature Envy）、总一起出现的参数团（Data Clumps）、原始类型偏执（Primitive Obsession）、一处改 N 处跟着改（Shotgun Surgery）、为想象中的未来留钩子（Speculative Generality）。
+- 坏味道对照文末 **Fowler 异味基线**（12 条完整清单 + 修法）。
 - **删除测试**：想象删掉这个模块——复杂度消失 = 它只是过路层；复杂度在 N 个调用方重现 = 它在挣饭钱。
 - 单次使用的抽象、没人要的可配置性、不可能场景的防御 → 全删。
 
@@ -47,6 +47,25 @@
 ## adversarial（常驻收尾）
 
 像攻击者 + 混乱工程师那样过一遍：我要让它在生产炸掉，会从哪下手？断网/慢盘/时钟漂移/双击提交/重放请求。只列问题，不写赞美。每条标 FIXABLE（能直接修）或 INVESTIGATE（要先查证）。
+
+## Fowler 异味基线（常驻附带；judgement call，永不硬违规）
+
+仓库成文规范永远压过本基线（规范背书的写法不报）；工具已强制的不报；每条报「疑似 X」并给修法。
+
+| 异味 | 信号 → 修法 |
+| --- | --- |
+| Mysterious Name | 名字说不清职责 → 重命名；起不出诚实名字 = 设计本身含混 |
+| Duplicated Code | 同型代码两处以上 → 抽出共享形状，两边调用 |
+| Feature Envy | 方法总在用别家的数据 → 把方法搬到数据所在处 |
+| Data Clumps | 几个字段总结伴出现 → 捆成一个类型（"一个想出生的类型"） |
+| Primitive Obsession | 概念用裸字符串/数字扛 → 给概念建自己的小类型 |
+| Repeated Switches | 同一组分支到处重复 → 多态或一张共享映射表 |
+| Shotgun Surgery | 一个变更要散弹式改全库 → 把一起变的聚进一个模块 |
+| Divergent Change | 一个模块因多种原因而变 → 拆开，每模块单一变因 |
+| Speculative Generality | 为想象的将来留的钩子 → 删；真需求出现前内联回去 |
+| Message Chains | a.b().c().d() 一路打听 → 用一个方法藏住链路 |
+| Middle Man | 类的方法全在转发 → 砍掉中间人，直连真目标 |
+| Refused Bequest | 子类拒用继承来的东西 → 放弃继承，改组合 |
 
 ## 子代理镜头派遣卡（模板）
 

@@ -1,6 +1,6 @@
 ---
 name: ui-taste
-description: 前端页面的审美与工艺融合技能（反 AI 味）。融合 taste-skill(基准)/ui-craft/impeccable/Vercel WIG/Anthropic frontend-design/ui-design-brain 等 9 个项目之所长：设计读法与三旋钮、签名赌注、数值 token 基准（间距/字阶/圆角/阴影/时长/缓动）、分级反 AI 味禁令、组件数值规范、状态八格、截图自评与完工十关，附机械检查脚本（scripts/ui_taste check 静态扫描 AI 味 + contrast 对比度计算）。当用户要写落地页/作品集/官网/仪表盘/产品 UI/组件，抱怨页面"太丑""AI 味""没有高级感"，要求"设计好看点""美化""打磨"，要做设计评审/打分，或要改版美化存量页面、从参考站取设计 token 时使用。Anti-slop frontend design: direction, numeric tokens, graded bans, component specs, screenshot self-critique, mechanical tell-scanner.
+description: 前端页面的审美与工艺融合技能（反 AI 味）。融合 taste-skill(基准)/ui-craft/impeccable/Vercel WIG/Anthropic frontend-design/ui-design-brain 等十余个项目之所长（清单见 references/sources.md）：设计读法与三旋钮、签名赌注、数值 token 基准（间距/字阶/圆角/阴影/时长/缓动）、分级反 AI 味禁令、组件数值规范、状态八格、截图自评与完工十关，附机械检查脚本（scripts/ui_taste check 静态扫描 AI 味 + contrast 对比度计算）。当用户要写落地页/作品集/官网/仪表盘/产品 UI/组件，抱怨页面"太丑""AI 味""没有高级感"，要求"设计好看点""美化""打磨"，要做设计评审/打分，或要改版美化存量页面、从参考站取设计 token 时使用。Anti-slop frontend design: direction, numeric tokens, graded bans, component specs, screenshot self-critique, mechanical tell-scanner.
 ---
 
 # ui-taste — 让 AI 写的前端不像 AI 写的
@@ -38,7 +38,7 @@ description: 前端页面的审美与工艺融合技能（反 AI 味）。融合
 - **层级 1.5×**：相邻层级在字号/字重/对比度/面积至少一项上差 ≥1.5 倍。眯眼测试：视线必须先落在唯一一处。
 - **90% 中性 + 一个强调色**：首屏强调色 ≤3-5 处（CTA、一个关键数字、激活态）。默认别选蓝，更别选紫。
 - **禁 AI 三件套**：紫/蓝渐变发光、三张等宽图标卡片、居中 hero + 暗色网格背景。全禁令见 `references/anti-slop.md`。
-- **排版**：视口内 ≤3 个字重；正文行长 45-75ch、行高 1.5-1.65（中文 1.7-1.85）；hero 标题 ≤2-3 行（4 行=字号错误）；数字列 `tabular-nums`。
+- **排版**：视口内 ≤3 个字重；正文行长 45-75ch、行高 1.5-1.65（中文 1.7-1.85）；hero 标题 ≤2 行（4 行=字号错误）；数字列 `tabular-nums`。
 - **状态全周期**：loading（骨架屏匹配最终布局）/ empty（给下一步动作）/ error（原因+恢复路径）。静态成功态 ≠ 完成。
 - **动效**：只动 `transform/opacity`；退场时长 = 入场的 75%；`prefers-reduced-motion` 必须处理；禁 `transition: all`、禁 `window.addEventListener('scroll')`。
 - **对比度**：正文 4.5:1、大字 3:1（含按钮文字、placeholder）。"浅灰显高级"是 AI 页面难读的头号原因。

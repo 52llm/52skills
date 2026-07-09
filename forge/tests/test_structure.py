@@ -71,6 +71,36 @@ class TestLoadBearing(unittest.TestCase):
     for marker in ("轴 A", "轴 B", "四层实存检查", "NEEDS WORK"):
       self.assertIn(marker, t, marker)
 
+  def test_spec_gates_present(self):
+    t = _text("forge/forge-spec/SKILL.md")
+    for marker in ("深化菜单", "NEEDS CLARIFICATION", "用户确认共识", "决策交用户"):
+      self.assertIn(marker, t, marker)
+
+  def test_plan_mechanisms_present(self):
+    t = _text("forge/forge-plan/SKILL.md")
+    for marker in ("Constitution Check", "中途变卦", "[HITL]", "expand–contract",
+                   "Checkpoint", "tripwire", "深化菜单"):
+      self.assertIn(marker, t, marker)
+
+  def test_review_baseline_gates_present(self):
+    t = _text("forge/forge-review/SKILL.md")
+    for marker in ("NEVER_GATE", "Fowler", "judgement call", "Deferred"):
+      self.assertIn(marker, t, marker)
+
+  def test_compound_flywheel_present(self):
+    t = _text("forge/forge-compound/SKILL.md")
+    for marker in ("no-op", "正向表述", "Discoverability", "supersede"):
+      self.assertIn(marker, t, marker)
+
+  def test_debug_discipline_present(self):
+    t = _text("forge/forge-debug/SKILL.md")
+    for marker in ("Iron Law", "复现"):
+      self.assertIn(marker, t, marker)
+
+  def test_hitl_contract_reaches_subagent_mode(self):
+    # 第六轮契约：[HITL] 在自主编排里必须停下——编排骨架若丢了这条例外，契约静默失效
+    self.assertIn("[HITL]", _text("forge/forge-build/references/subagent-mode.md"))
+
   def test_anchor_policy_declared_both_sides(self):
     # 锚点政策：forge 的纪律节选随 careful 演进，声明必须同时在两处存在
     self.assertIn("节选", _text("forge/README.md"))

@@ -33,7 +33,9 @@
 - **禁 `transition: all`**——逐属性列出。
 - **禁 `window.addEventListener('scroll')`** 与 scrollY 进 React state：用 Motion `useScroll`/ScrollTrigger/IntersectionObserver/CSS scroll-driven animations。
 - 连续值（鼠标位置/滚动进度/磁性 hover）**禁 useState**：用 `useMotionValue`/`useTransform`（useState 每帧重渲染，移动端直接崩）。
-- rAF 循环必须有停止条件；同一组件树**禁混** GSAP 与 Motion（抢帧）；Three.js 同理隔离在叶子组件。
+- rAF 循环必须有停止条件；`repeat:-1` 的循环 tween 组件卸载时必须 kill（SPA 内存泄漏）；同一组件树**禁混** GSAP 与 Motion（抢帧）；Three.js 同理隔离在叶子组件。
+- `transform-origin` 按运动语义设对；SVG 动 `<g>` 包裹层并配 `transform-box: fill-box; transform-origin: center`；动画可中断——中途响应用户输入，别锁死到播完。
+- 逐词/逐字文字动画 >8 个词禁（劫持阅读节奏）。
 - **reveal 安全**：内容可见性不许依赖 class 触发的过渡（隐藏 tab/无头渲染下过渡不触发→整节空白）。默认可见，动画只做增强。
 - **禁图片 hover 缩放/位移**（含 group-hover 经父级触发）——图不是动作目标；要反馈动卡片的底色/边框/阴影。
 - 循环动画离屏暂停；移动端粒子上限 桌面800/平板300/手机100；GSAP pin 在 <768px 禁用。
@@ -49,7 +51,7 @@
 ```tsx
 <motion.li initial={reduce ? false : { opacity: 0, y: 24 }}
   whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, amount: 0.3 }}
-  transition={{ duration: 0.6, delay: i * 0.06, ease: [0.16, 1, 0.3, 1] }} />
+  transition={{ duration: 0.6, delay: i * 0.06, ease: [0.22, 1, 0.36, 1] }} />
 ```
 
 真要 pin/scrub（sticky 卡片堆、横向劫持）用 GSAP ScrollTrigger，两个已知翻车点都靠同一把钥匙：

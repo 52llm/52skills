@@ -32,6 +32,18 @@ class TestCheckRules(unittest.TestCase):
     for rule in ("div-onclick", "transition-all", "img-no-alt", "scroll-listener"):
       self.assertIn((rule, "critical"), hits, rule)
 
+  def test_viewport_and_paste_criticals_fire(self):
+    hits = scan_snippet("""
+      <meta name="viewport" content="width=device-width, user-scalable=no" />
+      <input onPaste={(e) => e.preventDefault()} />
+    """, suffix=".html")
+    self.assertIn(("user-scalable", "critical"), hits)
+    self.assertIn(("block-paste", "critical"), hits)
+
+  def test_filler_words_extended(self):
+    hits = scan_snippet('<p>In the world of AI, we Delve into Seamless workflows.</p>')
+    self.assertIn(("filler-words", "minor"), hits)
+
   def test_em_dash_english_critical_chinese_minor(self):
     en = scan_snippet('<p>Fast — reliable — beautiful</p>')
     zh = scan_snippet('<p>快——而且好看</p>')
